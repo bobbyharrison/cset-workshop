@@ -13,11 +13,11 @@ db = SQLite3::Database.new "./db/dev.db"
 
 Cuba.define do
   on root do
-    student_array = db.execute("SELECT * FROM students")
-    students = student_array.map do |id, name, email, discord|
-      { :id => id, :name => name, :email => email, :discord => discord }
+    student_array = db.execute("SELECT * FROM bands")
+    bands = student_array.map do |id, name, firstalbumyear, myrank|
+      { :id => id, :name => name, :firstalbumyear => year, :myrank => rank }
     end
-    res.write view("index", students: students)
+    res.write view("index", bands: bands)
   end
 
   on "new" do
@@ -27,18 +27,18 @@ Cuba.define do
   on post do
     on "create" do
       name = req.params["name"]
-      email = req.params["email"]
-      discord = req.params["discord"]
+      first-album-year = req.params["year"]
+      my-rank = req.params["rank"]
       db.execute(
-        "INSERT INTO students (name, email, discord) VALUES (?, ?, ?)",
-        name, email, discord
+        "INSERT INTO bands (name, firstalbumyear, myrank) VALUES (?, ?, ?)",
+        name, firstalbumyear, myrank
       )
       res.redirect "/"
     end
 
     on "delete/:id" do |id|
       db.execute(
-        "DELETE FROM students WHERE id=#{id}"
+        "DELETE FROM bands WHERE id=#{id}"
       )
       res.redirect "/"
     end

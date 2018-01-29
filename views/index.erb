@@ -1,9 +1,9 @@
-<h1>All My Students</h1>
+<h1>All My Favorite Bands</h1>
 <ul>
-  <% students.each do |student| %>
+  <% bands.each do |band| %>
     <li>
-      <a href="mailto:<%= student[:email] %>"><%= student[:name] %></a>
-      (<%= student[:discord] %>)
+      <a href="mailto:<%= band[:firstalbumyear] %>"><%= student[:name] %></a>
+      (<%= student[:myrank] %>)
 
       <form action="/delete/<%= student[:id] %>" method="post" class="delete">
         <input type="submit" value="delete">

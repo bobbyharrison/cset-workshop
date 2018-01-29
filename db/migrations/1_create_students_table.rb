@@ -6,8 +6,8 @@ db.execute "
   create table bands (
     id INTEGER PRIMARY KEY ASC,
     name VARCHAR(255),
-    first-album-year VARCHAR(255),
-    my-rank VARCHAR(255)
+    firstalbumyear VARCHAR(255),
+    myrank VARCHAR(255)
   );
 "
 
@@ -23,7 +23,7 @@ bands = [
 
 students.each do |band|
   db.execute(
-    "INSERT INTO students (name, first-album-year, my-rank) VALUES (?, ?, ?)",
+    "INSERT INTO students (name, firstalbumyear, myrank) VALUES (?, ?, ?)",
     band
   )
 end

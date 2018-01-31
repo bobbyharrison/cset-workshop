@@ -14,8 +14,8 @@ db = SQLite3::Database.new "./db/dev.db"
 Cuba.define do
   on root do
     student_array = db.execute("SELECT * FROM bands")
-    bands = student_array.map do |id, name, firstalbumyear, myrank|
-      { :id => id, :name => name, :firstalbumyear => year, :myrank => rank }
+    bands = student_array.map do |id, name, year, myrank|
+      { :id => id, :name => name, :firstalbumyear => year, :myrank => myrank }
     end
     res.write view("index", bands: bands)
   end
@@ -26,9 +26,10 @@ Cuba.define do
 
   on post do
     on "create" do
+      p req.params
       name = req.params["name"]
-      first-album-year = req.params["year"]
-      my-rank = req.params["rank"]
+      firstalbumyear = req.params["year"]
+      myrank = req.params["rank"]
       db.execute(
         "INSERT INTO bands (name, firstalbumyear, myrank) VALUES (?, ?, ?)",
         name, firstalbumyear, myrank

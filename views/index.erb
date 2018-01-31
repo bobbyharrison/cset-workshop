@@ -2,13 +2,13 @@
 <ul>
   <% bands.each do |band| %>
     <li>
-      <a href="mailto:<%= band[:firstalbumyear] %>"><%= student[:name] %></a>
-      (<%= student[:myrank] %>)
-
-      <form action="/delete/<%= student[:id] %>" method="post" class="delete">
+      <%= band[:name] %>
+      (<%= band[:myrank] %>)
+      <%= band[:firstalbumyear] %>
+      <form action="/delete/<%= band[:id] %>" method="post" class="delete">
         <input type="submit" value="delete">
       </form>
     </li>
   <% end %>
 </ul>
-<p><a href="/new">Add new</a></p>
+<p><a href="/new">Add New Band</a></p>

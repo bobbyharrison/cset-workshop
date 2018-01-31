@@ -21,9 +21,9 @@ bands = [
   ["Iron Maiden", "1981", "7"]
 ]
 
-students.each do |band|
+bands.each do |band|
   db.execute(
-    "INSERT INTO students (name, firstalbumyear, myrank) VALUES (?, ?, ?)",
+    "INSERT INTO bands (name, firstalbumyear, myrank) VALUES (?, ?, ?)",
     band
   )
 end
